@@ -146,43 +146,13 @@ void setup() {
   connectWifi();
   connectFirebase();
   setTimeDay();
-  //setDataField("testUser/field2", random(0, 100), random(0, 100));
-//  printFirebase();
-//getJsonFirebase();
-//  while(!Serial) { }
-  // Deep sleep mode for 30 seconds, the ESP8266 wakes up by itself when GPIO 16 (D0 in NodeMCU board) is connected to the RESET pin
-//  Serial.println("I'm awake, but I'm going into deep sleep mode for 10 seconds");
- 
-//  if (Firebase.RTDB.getInt(&firebaseData, "/data")) {
-//      if (firebaseData.dataType() == "int") {
-//        int intValue = firebaseData.intData();
-//        Serial.print("data: ");
-//        Serial.println(intValue);
-//      }
-//  }
-//  if (Firebase.RTDB.getString(&firebaseData, "/name")) {
-//    if (firebaseData.dataType() == "string") {
-//      String stringValue = firebaseData.stringData();
-//      Serial.print("name: ");
-//      Serial.println(stringValue);
-//    }
-//  } 
-//   if (Firebase.RTDB.getJSON(&firebaseData, "/name")) {
-//    if (firebaseData.dataType() == "string") {
-//      String stringValue = firebaseData.stringData();
-//      Serial.print("name: ");
-//      Serial.println(stringValue);
-//    }
-//  } 
-//  ESP.deepSleep(300e6);
-
-  //Serial.println("Sleep Arduino");
-  //ESP.deepSleep(15e6);
+   int redval[4];
+  readSensorValue(redval);
+  setDataField("field2", redval[0], redval[1]);
+  Serial.println("Sleep ESP8266");
+  ESP.deepSleep(15e6);
 }
 
 void loop(){
-  int redval[4];
-  readSensorValue(redval);
-  setDataField("field2", redval[0], redval[1]);
-  delay(300000);
+
 } 
